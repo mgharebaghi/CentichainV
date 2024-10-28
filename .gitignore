@@ -37,3 +37,6 @@ next-env.d.ts
 
 # tauri
 /src-tauri/mongodb.msi
+
+# keys
+/~/.tauri
