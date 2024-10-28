@@ -1,0 +1,48 @@
+[package]
+name = "Centichain"
+version = "0.9.0"
+description = "A Blockchain Network for Decentralized and Secure Transactions"
+authors = ["Mohammad Gharebaghi"]
+license = ""
+repository = ""
+default-run = "Centichain"
+edition = "2021"
+rust-version = "1.60"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[build-dependencies]
+tauri-build = { version = "2.0", features = [] }
+
+[lib]
+name = "app_lib"
+crate-type = ["staticlib", "cdylib", "rlib", "lib"]
+
+[dependencies]
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+tauri = { version = "2.0", features = [] }
+tauri-plugin-cli = "2"
+libp2p = { version = "^0.54", features = ["full"] }
+reqwest = { version = "0.12.5", features = ["json", "stream"] }
+mongodb = { version = "^3.0" }
+rand = "0.8.5"
+sp-core = "^34.0"
+rust_decimal = "^1.35"
+serde_with = "^3.9"
+sha2 = "^0.10"
+centichain_keypair = "3.2.3"
+sysinfo = "0.30.13"
+zip = "^2"
+chrono = "0.4.38"
+tauri-plugin-process = "2"
+tauri-plugin-clipboard-manager = "2.0.0-alpha.2"
+
+[features]
+# this feature is used for production builds or when `devPath` points to the filesystem and the built-in dev server is disabled.
+# If you use cargo directly instead of tauri's cli you can use this feature flag to switch between tauri's `dev` and `build` modes.
+# DO NOT REMOVE!!
+custom-protocol = [ "tauri/custom-protocol" ]
+
+[target.'cfg(not(any(target_os = "android", target_os = "ios")))'.dependencies]
+tauri-plugin-updater = "2"
